@@ -18,27 +18,25 @@
 
 :small_orange_diamond: [Settings](#settings)
 
-:small_orange_diamond: [Run application](#run-application-arrow_forward)
+:small_orange_diamond: [What and how to search data](#what-and-how-to-search-data-mag_right)
 
 :small_orange_diamond: [Run tests](#run-tests-memo)
 
-:small_orange_diamond: [Database (Table)](#database-table)
+:small_orange_diamond: [Database (Table)](#database-table-bookmark_tabs)
 
-:small_orange_diamond: [Database (Graphic)](#database-graphic)
+:small_orange_diamond: [Database (Graphic)](#database-graphic-bar_chart)
 
 :small_orange_diamond: [License](#license-trident)
 
 ## Description of Project
 
 <p align="justify">
-   
+    The objective was to use a csv file and turn it into a database to consult it, allowing to obtain data such as: most populous municipalities in a UF, average population of each UF and search for municipalities. 
 </p>
 
 ## Installed Gems
 
-:books: [**SQLITE**](https://rubygems.org/gems/pg/versions/0.18.4?locale=pt-BR) 
-
-### To test application
+:books: [**Sqlite**](https://rubygems.org/gems/pg/versions/0.18.4?locale=pt-BR) 
 
 :books: [**RSpec**](https://github.com/rspec/rspec-rails) para escrever e executar testes unitários, isto é, de baixo nível 
 
@@ -46,11 +44,11 @@
 
 Some resources should be installed before to setting the project
 
-:warning: [Ruby](https://www.ruby-lang.org/pt/documentation/installation/) versão >=2.6.3
+:warning: [Ruby](https://www.ruby-lang.org/pt/documentation/installation/) version >=2.6.3
 
-:warning: [Gem](https://rubygems.org/pages/download?locale=pt-BR) versão >=3.1.2
+:warning: [Gem](https://rubygems.org/pages/download?locale=pt-BR) version >=3.1.2
 
-:warning: [Bundle](https://bundler.io/man/bundle-install.1.html) versão >=2.1.2
+:warning: [Bundle](https://bundler.io/man/bundle-install.1.html) version >=2.1.2
 
 To check version, run:
 ```
@@ -67,9 +65,13 @@ Acess the folder
 $ cd search_IBGE
 ```
 
-## What and how to search data
+## What and how to search data :mag_right:
 
-## Database (Graphic)
+## Run tests :memo:
+
+## Database (Table) :bookmark_tabs:
+
+## Database (Graphic) :bar_chart:
 
 ## License :trident:
 
