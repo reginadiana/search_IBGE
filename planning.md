@@ -13,7 +13,7 @@
 **Table: city**
 
 | **Level** | **Code** | **UF** | **Population**|
-| :-----: |:-----: |:-----: |
+| :-----: |:-----: |:-----: |:-----: |
 | MU | 1100015 | Alta Floresta D'Oeste (RO)| 22945 |
 | MU | 1100023 | Ariquemes (RO) | 107863 |
 | MU | 1100031 | Cabixi (RO) | 5312 |
