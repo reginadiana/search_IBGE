@@ -8,6 +8,8 @@
   <img src="http://img.shields.io/static/v1?label=STATUS&message=IN%20PROGRESSS&color=ORANGE&style=for-the-badge">
 </p>
 
+:memo: [Planning Project]()
+
 ## List of Content
 
 :small_orange_diamond: [Description of Project](#description-of-project)
@@ -67,7 +69,34 @@ $ cd search_IBGE
 
 ## What and how to search data :mag_right:
 
+### When choosing a UF, list the 10 municipalities (MU) with the largest UF population
+
+```ruby
+```
+
+### Search for a MU by name and list the population of that MU
+
+```ruby
+```
+
+### List the population of a municipality by some code
+
+```ruby
+```
+### Allow the search to be done also by name and UF code, showing the sum of the total population of the municipalities
+```ruby
+```
+
+### When choosing a UF, list the population average of the municipalities
+```ruby
+```
+
 ## Run tests :memo:
+
+```ruby
+$ cd search_IBGE
+$ rspec 
+```
 
 ## Database (Table) :bookmark_tabs:
 
@@ -75,7 +104,7 @@ $ cd search_IBGE
 
 ## License :trident:
 
-The [MIT License](https://github.com/reginadiana/search_IBGE/tree/add-license-1) (MIT)
+The [MIT License](https://github.com/reginadiana/search_IBGE/blob/master/LICENSE) (MIT)
 
 Copyright :copyright: 2020 SEARCH IBGE
 <br/>
