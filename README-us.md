@@ -38,9 +38,9 @@
 
 ## Installed Gems
 
-:books: [**Sqlite**](https://rubygems.org/gems/pg/versions/0.18.4?locale=pt-BR) 
+:books: [**Sqlite**](https://rubygems.org/gems/pg/versions/0.18.4?locale=pt-BR) to build a database
 
-:books: [**RSpec**](https://github.com/rspec/rspec-rails) para escrever e executar testes unitários, isto é, de baixo nível 
+:books: [**RSpec**](https://github.com/rspec/rspec-rails) to write tests
 
 ## Requirements :package:
 
