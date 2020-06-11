@@ -69,25 +69,25 @@ $ cd search_IBGE
 
 ## What and how to search data :mag_right:
 
-### When choosing a UF, list the 10 municipalities (MU) with the largest UF population
+**When choosing a UF, list the 10 municipalities (MU) with the largest UF population**
 
 ```ruby
 ```
 
-### Search for a MU by name and list the population of that MU
+**Search for a MU by name and list the population of that MU**
 
 ```ruby
 ```
 
-### List the population of a municipality by some code
+**List the population of a municipality by some code**
 
 ```ruby
 ```
-### Allow the search to be done also by name and UF code, showing the sum of the total population of the municipalities
+**Allow the search to be done also by name and UF code, showing the sum of the total population of the municipalities**
 ```ruby
 ```
 
-### When choosing a UF, list the population average of the municipalities
+**When choosing a UF, list the population average of the municipalities**
 ```ruby
 ```
 
