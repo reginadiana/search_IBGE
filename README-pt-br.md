@@ -8,7 +8,9 @@
   <img src="http://img.shields.io/static/v1?label=STATUS&message=IN%20PROGRESSS&color=ORANGE&style=for-the-badge">
 </p>
 
-:memo: [Planning Project]()
+[:us: README em Ingles]()
+
+:memo: [Planejamento e Fases do Projeto]()
 
 ## Tópicos
 
@@ -69,32 +71,32 @@ $ cd search_IBGE
 
 ## Como pesquisar pelos dados :mag_right:
 
-**1. Ao escolher por uma UF, listar os 10 municipios com maior população
+**1. Ao escolher por uma UF, listar os 10 municipios com maior população**
 
 ```ruby
 ```
 
-**2. Ao pesquisar por um municipio pelo nome, listar sua população
+**2. Ao pesquisar por um municipio pelo nome, listar sua população**
 
 ```ruby
 ```
 
-**3. Listar a população de um municipio por algum código
+**3. Listar a população de um municipio por algum código**
 
 ```ruby
 ```
 
-**4. Pesquisar a soma total da população dos municipios a partir da esquisa de uma UF pelo nome ou seu código
+**4. Pesquisar a soma total da população dos municipios a partir da esquisa de uma UF pelo nome ou seu código**
 
 ```ruby
 ```
 
-** 5. Lista das 10 cidades mais populosas a partir da UF
+**5. Lista das 10 cidades mais populosas a partir da UF**
 
 ```ruby
 ```
 
-** 6. Media populacional dos municipios a partir da UF
+**6. Media populacional dos municipios a partir da UF**
 
 ```ruby
 ```
