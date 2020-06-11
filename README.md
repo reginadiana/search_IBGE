@@ -10,7 +10,7 @@
 
 [:us: README em Ingles](https://github.com/reginadiana/search_IBGE/blob/master/README-us.md)
 
-:memo: [Planejamento e Fases do Projeto](https://github.com/reginadiana/search_IBGE/blob/master/planning.md)
+:memo: [Planejamento e Fases do Projeto](https://github.com/reginadiana/search_IBGE/wiki/Planning-the-Project)
 
 ## Tópicos
 
