@@ -8,7 +8,7 @@
   <img src="http://img.shields.io/static/v1?label=STATUS&message=IN%20PROGRESSS&color=ORANGE&style=for-the-badge">
 </p>
 
-[:us: README em Ingles]()
+[:us: README em Ingles](https://github.com/reginadiana/search_IBGE/blob/master/README-us.md)
 
 :memo: [Planejamento e Fases do Projeto]()
 
