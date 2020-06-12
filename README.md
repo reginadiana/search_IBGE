@@ -8,7 +8,7 @@
   <img src="http://img.shields.io/static/v1?label=STATUS&message=IN%20PROGRESSS&color=ORANGE&style=for-the-badge">
 </p>
 
-| [:us: README em Ingles](https://github.com/reginadiana/search_IBGE/blob/master/README-us.md) | :memo: [Planejamento e Fases do Projeto](https://github.com/reginadiana/search_IBGE/wiki/Search-IBGE---Planejamento---Menu) | | [Proposta](https://github.com/reginadiana/search_IBGE/blob/master/desafio_-_treinadev.pdf) |
+| [:us: README em Ingles](https://github.com/reginadiana/search_IBGE/blob/master/README-us.md) | :memo: [Planejamento e Fases do Projeto](https://github.com/reginadiana/search_IBGE/wiki/Search-IBGE---Planejamento---Menu) | [Proposta](https://github.com/reginadiana/search_IBGE/blob/master/desafio_-_treinadev.pdf) |
 | :------: | :------: | :------: |
 
 ## Tópicos
