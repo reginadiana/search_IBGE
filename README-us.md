@@ -8,7 +8,7 @@
   <img src="http://img.shields.io/static/v1?label=STATUS&message=IN%20PROGRESSS&color=ORANGE&style=for-the-badge">
 </p>
 
-:memo: [Planning Project](https://github.com/reginadiana/search_IBGE/wiki/Planning-the-Project)
+:memo: [Planning Project](https://github.com/reginadiana/search_IBGE/wiki/Search-IBGE---Planejamento---Menu)
 
 ## List of Content
 
