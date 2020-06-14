@@ -1,6 +1,6 @@
 class Sql
-  def query_create_table
-    read_file('query_create_table.sql')
+  def query_select
+    read_file('query_SELECT.sql')
   end
 
   private

@@ -9,6 +9,9 @@ require 'sqlite3'
 
 puts "\n== Preparing database: Create Tables =="
 begin
+  federative_csv = File.readlines(Dir.pwd + "/data/federative.csv")
+  counties_csv = File.readlines(Dir.pwd + "/data/counties.csv")
+
   db = SQLite3::Database.open "db/database.db"
   db.execute <<-SQL
     CREATE TABLE Federatives(
@@ -27,8 +30,19 @@ begin
     );
   SQL
 
+  federative_csv.each do |dados|
+    dados = dados.split(',')
+    db.execute "INSERT INTO Federatives VALUES ( ?, ?, ? )", dados
+  end
+
+  counties_csv.each do |dados|
+    dados = dados.split(',')
+    db.execute "INSERT INTO Counties VALUES ( ?, ?, ?, ? )", dados
+  end
+
 rescue SQLite3::Exception => e
   puts e
 ensure
+  puts "\n== We finish to preparate database :) =="
   db.close if db
 end
