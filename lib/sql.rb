@@ -1,6 +1,10 @@
 class Sql
-  def query_select
-    read_file('query_SELECT.sql')
+  def query_select_uf
+    read_file('query_select_uf.sql')
+  end
+
+  def query_select_counties_by_uf
+    read_file('query_select_counties_by_uf.sql')
   end
 
   private

@@ -5,23 +5,23 @@ describe Sql do
   db = SQLite3::Database.open "db/database.db"
 
   context("Busca por informações das Unidades Federativas") do
-    it 'Realiza a query em Unidades Federativas e retorna as informações de uma UF pelo nome' do
+    it 'Realiza a query em Unidades Federativas pelo nome e retorna as informações de uma UF' do
       resultado = db.execute(Sql.new.query_select_uf("São Paulo"))
-      expect(resultado).to eq
+      expect(resultado).to eq [["UF"], [35], ["São Paulo (SP)"]]
     end
 
-    it 'Realiza a query em Unidades Federativas e retorna as informações de uma UF pelo código' do
-      resultado = db.execute(Sql.new.query_select_uf("São Paulo"))
-      expect(resultado).to eq
+    it 'Realiza a query em Unidades Federativas pelo código e retorna as informações de uma UF' do
+      resultado = db.execute(Sql.new.query_select_uf(35))
+      expect(resultado).to eq [["UF"], [35], ["São Paulo (SP)"]]
     end
 
-    it 'Realiza a query em Unidades Federativas pelo nome e seus municipios' do
-      resultado = db.execute(Sql.new.query_select_uf("São Paulo"))
-      expect(resultado).to eq
+    it 'Realiza a query em Unidades Federativas pelo nome e retorna os nomes de seus municipios' do
+      resultado = db.execute(Sql.new.query_select_counties_by_uf("São Paulo"))
+      expect(resultado).to include([["Ocauçu (SP)"], ["Óleo (SP)"], ["Olímpia (SP)"], ["Onda Verde (SP)"], ["Oriente (SP)"]])
     end
-    it 'Realiza a query em Unidades Federativas pelo código e seus municipios' do
-      resultado = db.execute(Sql.new.query_select_uf("São Paulo"))
-      expect(resultado).to eq
+    it 'Realiza a query em Unidades Federativas pelo código e retorna seus municipios' do
+      resultado = db.execute(Sql.new.query_select_counties_by_uf("São Paulo"))
+      expect(resultado).to eq ([["Parisi (SP)"], ["Patrocínio Paulista (SP)"], ["Paulicéia (SP)"], ["Paulínia (SP)"], ["Paulistânia (SP)"]])
     end
   end
 
@@ -37,12 +37,12 @@ describe Sql do
       expect(resultado).to eq "Santo André"
     end
     it 'Realiza a query em Municipios e retorna as informações de um municipio pelo nome' do
-      resultado = db.execute(Sql.new.query_select_mu("Santo André"))
+      resultado = db.execute(Sql.new.query_select_mu("Santo André (SP)"))
       expect(resultado).to eq
     end
 
     it 'Realiza a query em Municipios e retorna as informações de um municipio pelo código' do
-      resultado = db.execute(Sql.new.query_select_mu("Santo André"))
+      resultado = db.execute(Sql.new.query_select_mu("Santo André (SP)"))
       expect(resultado).to eq
     end
   end
