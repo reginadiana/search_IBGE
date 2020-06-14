@@ -1,3 +1,5 @@
+require "sql"
+
 class FileParser
 
   def files_not_exist(federative_csv, counties_csv)

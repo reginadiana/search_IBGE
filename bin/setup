@@ -1,7 +1,34 @@
-#!/usr/bin/env sh
-set -e
+#!/usr/bin/env ruby
 
-bundle install
 
-echo
-echo '== Tudo configurado, pode iniciar ;) =='
+puts '== Installing dependencies =='
+system 'gem install bundler --conservative'
+system('bundle check') || system('bundle install')
+
+require 'sqlite3'
+
+puts "\n== Preparing database: Create Tables =="
+begin
+  db = SQLite3::Database.open "db/database.db"
+  db.execute <<-SQL
+    CREATE TABLE Federatives(
+      Status varchar(2),
+      Code int,
+      Title varchar(30)
+    );
+  SQL
+
+  db.execute <<-SQL
+    CREATE TABLE Counties(
+      Status varchar(2),
+      Code int,
+      Title varchar(30),
+      Population int
+    );
+  SQL
+
+rescue SQLite3::Exception => e
+  puts e
+ensure
+  db.close if db
+end

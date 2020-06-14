@@ -1,6 +1,8 @@
 require 'spec_helper'
+require 'sqlite3'
 
 describe FileParser do
+ context('preparate csv files') do
   it 'open csv file' do
     FileParser.new.separate_csv
   end
@@ -27,4 +29,10 @@ describe FileParser do
     expect(File.read('data/counties.csv')).to_not include(
       "UF,11,Rondônia")
   end
+ end
+ context('preparate a database') do
+  it("create tables") do
+    Sql.new.query_create_table
+  end
+ end
 end
