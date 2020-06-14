@@ -1,10 +1,15 @@
 class FileParser
 
-  def separate_csv
-    federative_csv = check_existence_of_file("federative")
-    counties_csv =  check_existence_of_file("counties")
+  def files_not_exist(federative_csv, counties_csv)
+    federative_csv = File.exist?("/data/#{federative_csv}.csv")
+    counties_csv = File.exist?("/data/#{counties_csv}.csv")
 
-    if(not federative_csv and not counties_csv)
+    return (not federative_csv and not counties_csv) ? true : false
+  end 
+
+  def separate_csv
+    if(files_not_exist("federative", "counties"))
+
       federative_csv = create_file("federative")
       counties_csv = create_file("counties")
 
@@ -13,7 +18,7 @@ class FileParser
         columns = line.split(',')
         columns.each do |item|
 	  if(item==="UF")
-		federative_csv.puts line
+		federative_csv.puts line[0,line.length-3]
           end
 	  if(item==="MU")
 		counties_csv.puts line
@@ -21,6 +26,7 @@ class FileParser
         end
       end
       counties_csv.close
+      federative_csv.close
     end
   end
 
@@ -37,8 +43,5 @@ class FileParser
   end
   def create_file(file)
     File.new("data/#{file}.csv", "w")
-  end
-  def check_existence_of_file(file)
-    File.exist?("/data/#{file}.csv")
   end
 end
