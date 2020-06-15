@@ -5,15 +5,13 @@ describe FileParser do
   it 'open csv file' do
     FileParser.new.separate_csv
   end
-  xit 'check if counties.csv and federative.csv exist' do
+  it 'check if counties.csv and federative.csv not exist' do
+    response = FileParser.new.files_not_exist("file", "other_file")
+    expect(response).to eq false
+  end
+  it 'check if counties.csv and federative.csv exist' do
     response = FileParser.new.files_not_exist("federative", "counties")
-    if(not response)
-	expect(File.read('data/federative.csv')).to not_exist
-        expect(File.read('data/counties.csv')).to not_exist
-    else
-	expect(File.read('data/federative.csv')).to exist
-        expect(File.read('data/counties.csv')).to exist
-    end 
+    expect(response).to eq true
   end
   it 'separate populacao_2019.csv in two other files csv' do
     FileParser.new.separate_csv

@@ -2,11 +2,11 @@ require "sql"
 
 class FileParser
 
-  def files_not_exist(federative_csv, counties_csv)
-    federative_csv = File.exist?("/data/#{federative_csv}.csv")
-    counties_csv = File.exist?("/data/#{counties_csv}.csv")
+  def files_not_exist(first_file, second_file)
+    first_file_exist = File.exist?(Dir.pwd + "/data/#{first_file}.csv")
+    second_file_exist = File.exist?(Dir.pwd + "/data/#{second_file}.csv")
 
-    return (not federative_csv and not counties_csv) ? true : false
+    return (not first_file_exist and not second_file_exist) ? false : true
   end 
 
   def separate_csv

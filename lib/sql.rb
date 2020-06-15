@@ -3,7 +3,11 @@ class Sql
     read_file('query_select_uf.sql')
   end
 
-  def query_select_counties_by_uf
+  def query_select_counties_by_uf(uf)
+    read_file('query_select_counties_by_uf.sql')
+  end
+
+  def query_sun_population
     read_file('query_select_counties_by_uf.sql')
   end
 
@@ -12,5 +16,4 @@ class Sql
   def read_file(file)
     File.open(Dir.pwd + "/queries/#{file}").read
   end
-
 end
