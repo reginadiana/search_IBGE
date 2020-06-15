@@ -100,6 +100,10 @@ $ cd search_IBGE
 ```ruby
 ```
 
+**7. Busca informações de uma UF pelo nome**
+```ruby
+```
+
 ## Executando os testes :memo:
 
 ```ruby
