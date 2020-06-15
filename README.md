@@ -8,28 +8,28 @@
   <img src="http://img.shields.io/static/v1?label=STATUS&message=IN%20PROGRESSS&color=ORANGE&style=for-the-badge">
 </p>
 
-| [:us: README em Ingles](https://github.com/reginadiana/search_IBGE/blob/master/README-us.md) | :memo: [Planejamento e Fases do Projeto](https://github.com/reginadiana/search_IBGE/wiki/Search-IBGE---Planejamento----Menu) | [Proposta](https://github.com/reginadiana/search_IBGE/blob/master/desafio_-_treinadev.pdf) |
+| [:us: &nbsp; README em Ingles](https://github.com/reginadiana/search_IBGE/blob/master/README-us.md) | :memo: &nbsp;&nbsp;[Planejamento e Fases do Projeto](https://github.com/reginadiana/search_IBGE/wiki/Search-IBGE---Planejamento----Menu) | [Proposta](https://github.com/reginadiana/search_IBGE/blob/master/desafio_-_treinadev.pdf) |
 | :------: | :------: | :------: |
 
 ## Tópicos
 
-:small_orange_diamond: [Descrição do Projeto](#descrição-do-projeto)
+:small_orange_diamond: &nbsp; [Descrição do Projeto](#descrição-do-projeto)
 
-:small_orange_diamond: [Gems instaladas](#gems-instaladas)
+:small_orange_diamond: &nbsp; [Gems instaladas](#gems-instaladas)
 
-:small_orange_diamond: [Pré-Requisitos](#pre-requisitos-package)
+:small_orange_diamond: &nbsp; [Pré-Requisitos](#pré-requisitos-package) 
 
-:small_orange_diamond: [Configurações](#configurações)
+:small_orange_diamond: &nbsp; [Configurações](#configurações)
 
-:small_orange_diamond: [Como pesquisar pelos dados](#como-pesquisar-pelos-dados-data-mag_right)
+:small_orange_diamond: &nbsp; [Como pesquisar pelos dados](#como-pesquisar-pelos-dados-mag_right)
 
-:small_orange_diamond: [Executando os testes](#executando-os-testes-memo)
+:small_orange_diamond: &nbsp; [Executando os testes](#executando-os-testes-memo) 
 
-:small_orange_diamond: [Database (Tabela)](#database-tabela-bookmark_tabs)
+:small_orange_diamond: &nbsp; [Database (Tabela)](#database-tabela-bookmark_tabs)
 
-:small_orange_diamond: [Database (Gráficos)](#database-gráficos-bar_chart)
+:small_orange_diamond: &nbsp; [Database (Gráficos)](#database-gráficos-bar_chart)
 
-:small_orange_diamond: [Licença](#licença-trident)
+:small_orange_diamond: &nbsp; [Licença](#licença-trident)
 
 ## Descrição do Projeto
 
@@ -39,19 +39,19 @@
 
 ## Gems instaladas
 
-:books: [**Sqlite**](https://rubygems.org/gems/pg/versions/0.18.4?locale=pt-BR) para construir o banco de dados 
+:books: &nbsp; [**Sqlite**](https://rubygems.org/gems/pg/versions/0.18.4?locale=pt-BR) para construir o banco de dados 
 
-:books: [**RSpec**](https://github.com/rspec/rspec-rails) para escrever e executar testes unitários, isto é, de baixo nível 
+:books: &nbsp; [**RSpec**](https://github.com/rspec/rspec-rails) para escrever e executar testes unitários, isto é, de baixo nível 
 
 ## Pré-Requisitos :package:
 
 Algumas dependencias devem ser instaladas antes de configurar o projeto:
 
-:warning: [Ruby](https://www.ruby-lang.org/pt/documentation/installation/) versão >=2.6.3
+:warning: &nbsp; [Ruby](https://www.ruby-lang.org/pt/documentation/installation/) versão >=2.6.3
 
-:warning: [Gem](https://rubygems.org/pages/download?locale=pt-BR) versão >=3.1.2
+:warning: &nbsp; [Gem](https://rubygems.org/pages/download?locale=pt-BR) versão >=3.1.2
 
-:warning: [Bundle](https://bundler.io/man/bundle-install.1.html) versão >=2.1.2
+:warning: &nbsp; [Bundle](https://bundler.io/man/bundle-install.1.html) versão >=2.1.2
 
 Para checar a versão, execute:
 ```
@@ -100,7 +100,7 @@ $ cd search_IBGE
 ```ruby
 ```
 
-## Executando testes :memo:
+## Executando os testes :memo:
 
 ```ruby
 $ cd search_IBGE
