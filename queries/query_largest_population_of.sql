@@ -1,0 +1,3 @@
+SELECT Title FROM 
+(SELECT * FROM Counties WHERE Code LIKE"35%") 
+ORDER BY Population DESC LIMIT 10;

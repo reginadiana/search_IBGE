@@ -1,2 +1,1 @@
--- Select info by some UF by code
-SELECT * FROM Federatives WHERE Title LIKE"São Paulo%"
+SELECT * FROM Federatives WHERE Code=35 OR Title="São Paulo"

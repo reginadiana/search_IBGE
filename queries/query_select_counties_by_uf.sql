@@ -1,1 +1,1 @@
--- Select all counties by UF
+SELECT Title FROM Counties WHERE Code LIKE'35%' 
