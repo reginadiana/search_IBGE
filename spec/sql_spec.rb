@@ -30,16 +30,16 @@ describe Sql do
 
     it 'realiza a query pelo código e busca a sua população a partir de uma MU' do
       resultado = db.execute(Sql.new.query_population_by_county, 3547809)
-      expect(resultado).to eq 718773
+      expect(resultado).to eq [[718773]]
     end
     it 'realiza a query pelo nome e retorna as informações de um MU' do
       resultado = db.execute(Sql.new.query_select_county, "Santo André (SP)")
-      expect(resultado).to eq [["MU"],["3547809"],["Santo André (SP)"],[718773]]
+      expect(resultado).to eq [["MU",3547809,"Santo André (SP)",718773]]
     end
 
     it 'Realiza a query em Municipios e retorna as informações de um municipio pelo código' do 
       resultado = db.execute(Sql.new.query_select_county, 3547809)
-      expect(resultado).to eq [["MU"],["3547809"],["Santo André (SP)"],[718773]]
+      expect(resultado).to eq [["MU",3547809,"Santo André (SP)",718773]]
     end
   end
 
@@ -92,22 +92,22 @@ describe Sql do
   context("Buscas com relações matemáticas envolvidas:") do
     it 'realiza a query em Unidades Federativas pelo nome e retona a soma da população' do
       resultado = db.execute(Sql.new.query_sum_population, "São Paulo")
-      expect(resultado).to eq 45919049
+      expect(resultado).to eq [[45919049]]
     end
 
     it 'realiza a query em Unidades Federativas pelo código e retona a soma da população' do
       resultado = db.execute(Sql.new.query_sum_population, 35)
-      expect(resultado).to eq 45919049
+      expect(resultado).to eq [[45919049]]
     end
 
     it 'realiza a query em Unidades Federativas pelo nome e lista a média populacional de seus municipios' do
       resultado = db.execute(Sql.new.query_population_average, "São Paulo")
-      expect(resultado).to eq 71192.324
+      expect(resultado).to eq [[71192.324]]
     end
 
     it 'realiza a query em Unidades Federativas pelo código e lista a média populacional de seus municipios' do
       resultado = db.execute(Sql.new.query_population_average, 35)
-      expect(resultado).to eq 71192.324
+      expect(resultado).to eq [[71192.324]]
     end
   end
 end

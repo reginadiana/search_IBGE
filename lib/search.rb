@@ -71,12 +71,12 @@ def menu
 end
 
 def insert_uf
-  print 'Digite o código da UF:'
+  print 'Digite o código, nome ou sigla entre parenteses da UF:'
   code = read_input
 end
 
 def insert_county
-  print 'Digite o código do Municipio:'
+  print 'Digite o código ou nome do Municipio:'
   code = read_input
 end
 
@@ -94,6 +94,25 @@ while opcao != SAIR
     print("\nVoce escolheu: ver as informações de uma UF:\n")
     uf = insert_uf
     response = db.execute("SELECT * FROM Federatives WHERE Code=? OR Title LIKE'#{uf}%' ", uf)
+    puts response
+
+    print "\nEscolha uma opção:"
+    opcao = gets.to_i
+  end
+  if opcao == SELECT_COUNTIES_BY_UF
+    print("\nVoce escolheu: ver os municipios de uma UF:\n")
+    uf = insert_uf
+    response = db.execute("SELECT Title FROM Counties WHERE Code LIKE'#{uf}%' OR Title LIKE'%#{uf}%'")
+    puts response
+    print "\nTotal de Municipios: " + response.length.to_s + "\n"
+
+    print "\nEscolha uma opção:"
+    opcao = gets.to_i
+  end
+  if opcao == SELECT_COUNTY
+    print("\nVoce escolheu: ver informações de um Municipo:\n")
+    county = insert_county
+    response = db.execute("SELECT * FROM Counties WHERE Code=? OR Title LIKE'#{county}%'", county)
     puts response
 
     print "\nEscolha uma opção:"
