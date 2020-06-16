@@ -90,6 +90,15 @@ opcao = menu
 db = SQLite3::Database.open "db/database.db"
 
 while opcao != SAIR
+  if opcao == SELECT_UF
+    print("\nVoce escolheu: ver as informações de uma UF:\n")
+    uf = insert_uf
+    response = db.execute("SELECT * FROM Federatives WHERE Code=? OR Title LIKE'#{uf}%' ", uf)
+    puts response
+
+    print "\nEscolha uma opção:"
+    opcao = gets.to_i
+  end
   if opcao == LARGEST_POPULATION
     print("\nVoce escolheu: 10 Municipios com maior população do Brasil:\n")
 

@@ -1,1 +1,1 @@
-SELECT * FROM Federatives WHERE Code=35 OR Title="São Paulo"
+SELECT * FROM Federatives WHERE Title LIKE'%?%' OR Code=? 

@@ -1,1 +1,1 @@
-SELECT * FROM Counties WHERE Code=3547809 OR Title="Santo André (SP)"
+SELECT * FROM Counties WHERE Code=? OR Title=?

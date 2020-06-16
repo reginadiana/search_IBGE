@@ -16,7 +16,7 @@ describe FileParser do
   it 'separate populacao_2019.csv in two other files csv' do
     FileParser.new.separate_csv
 
-    expect(File.read('data/federative.csv')).to include(
+    expect(File.read('data/federatives.csv')).to include(
       "UF,11,Rondônia")
     expect(File.read('data/federatives.csv')).to_not include(
       "MU,1100015,Alta Floresta D'Oeste (RO),22945")
