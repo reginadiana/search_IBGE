@@ -1,20 +1,19 @@
 require 'io/console'
+require 'sqlite3'
+require_relative 'sql'
 
-SELECT_UF = 'A'
-SELECT_COUNTIES_BY_UF = 'B'
-
-POPULATION_BY_COUNTY = 'C'
-SELECT_COUNTY = 'D'
-
-LARGEST_POPULATION = 'E'
-LESS_POPULATION = 'F'
-LARGEST_POPULATION_OF = 'G'
-LESS_POPULATION_OF = 'H'
-
-SUM_POPULATION = 'I'
-POPULATION_AVARAGE = 'J'
-
+SELECT_UF = 1
+SELECT_COUNTIES_BY_UF = 2
+POPULATION_BY_COUNTY = 3
+SELECT_COUNTY = 4
+LARGEST_POPULATION = 5
+LESS_POPULATION = 6
+LARGEST_POPULATION_OF = 7
+LESS_POPULATION_OF = 8
+SUM_POPULATION = 9
+POPULATION_AVARAGE = 10
 SAIR = 0
+MENU = 28
 
 def welcome
   puts 'Bem-vindo a plataforma de pesquisa do IBGE!'
@@ -53,18 +52,18 @@ def menu
 
   puts "[#{SELECT_UF}] Veja as informações de uma UF"
   puts "[#{SELECT_COUNTIES_BY_UF}] Veja todos os municipios de uma UF"
-
+  decorate
   puts "[#{POPULATION_BY_COUNTY}] Veja o total da população de um Municipio"
   puts "[#{SELECT_COUNTY}] Veja as informações de um Municipio"
-
+  decorate
   puts "[#{LARGEST_POPULATION}] Veja os 10 Municipios com maior população do Brasil"
   puts "[#{LESS_POPULATION}] Veja os 10 Municipios com menor população do Brasil"
   puts "[#{LARGEST_POPULATION_OF}] Veja os 10 Municipios com maior população de uma UF"
-  puts "[#{LESS_POPULATION_OF}] Veja as informações com menor população de uma UF"
-
+  puts "[#{LESS_POPULATION_OF}] Veja os 10 Municipios com menor população de uma UF"
+  decorate
   puts "[#{SUM_POPULATION}] Escolha uma UF e veja a soma da população"
   puts "[#{POPULATION_AVARAGE}] Escolha uma UF e veja a média populacional"
-
+  decorate
   puts "[#{SAIR}] Sair"
 
   print 'Escolha uma opção: '
@@ -81,18 +80,29 @@ def insert_county
   code = read_input
 end
 
+def decorate
+  puts "-"*60
+end
+
 clear
 welcome
 opcao = menu
+db = SQLite3::Database.open "db/database.db"
 
 while opcao != SAIR
   if opcao == LARGEST_POPULATION
-    uf = insert_uf
-    uf.salvar
-    wait_keypress
-    clear
+    print("\nVoce escolheu: 10 Municipios com maior população do Brasil:\n")
+    response = db.execute(Sql.new.query_largest_population)
+
+    response.each do |data|
+      puts data
+    end
+
+    print "\nEscolha uma opção:"
+    opcao = gets.to_i
   end
-  if opcao == SUM_POPULATION_BY_UF
+  if opcao == SUM_POPULATION
+    print("\nSoma da Populaçao:\n")
     uf = insert_uf
     uf.salvar
     wait_keypress
