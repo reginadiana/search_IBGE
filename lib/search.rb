@@ -92,8 +92,19 @@ db = SQLite3::Database.open "db/database.db"
 while opcao != SAIR
   if opcao == LARGEST_POPULATION
     print("\nVoce escolheu: 10 Municipios com maior população do Brasil:\n")
-    response = db.execute(Sql.new.query_largest_population)
 
+    response = db.execute(Sql.new.query_largest_population)
+    response.each do |data|
+      puts data
+    end
+
+    print "\nEscolha uma opção:"
+    opcao = gets.to_i
+  end
+  if opcao == LESS_POPULATION
+    print("\nVoce escolheu: 10 Municipios com menor população do Brasil:\n")
+
+    response = db.execute(Sql.new.query_less_population)
     response.each do |data|
       puts data
     end
