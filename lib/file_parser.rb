@@ -10,9 +10,9 @@ class FileParser
   end 
 
   def separate_csv
-    if(files_not_exist("federative", "counties"))
+    if(files_not_exist("federatives", "counties"))
 
-      federative_csv = create_file("federative")
+      federative_csv = create_file("federatives")
       counties_csv = create_file("counties")
 
       population = read_each_line("populacao_2019")
@@ -30,10 +30,6 @@ class FileParser
       counties_csv.close
       federative_csv.close
     end
-  end
-
-  def convert_csv_to_db
-	
   end
 
   private
