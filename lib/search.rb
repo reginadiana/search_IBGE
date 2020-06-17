@@ -95,7 +95,7 @@ while opcao != SAIR
     puts "\nVoce escolheu: ver as informações de uma UF:\n".colorize(:light_blue)
     uf = insert_uf
     response = db.execute("SELECT * FROM Federatives WHERE Code=? OR Title LIKE'#{uf}%' ", uf)
-    puts "#{response}".green
+    puts "#{response}\n".green
     puts "\nEscolha uma opção:"
     opcao = gets.to_i
   end
@@ -115,7 +115,7 @@ while opcao != SAIR
     puts "\nVoce escolheu: ver informações de um Municipo:\n".colorize(:light_blue)
     county = insert_county
     response = db.execute("SELECT * FROM Counties WHERE Code=? OR Title LIKE'#{county}%'", county)
-    puts "#{response}".green
+    puts "#{response}\n".green
 
     puts "\nEscolha uma opção:"
     opcao = gets.to_i
@@ -149,6 +149,13 @@ while opcao != SAIR
     wait_keypress
     clear
   end
+
+  if opcao < 0 or opcao > 11
+    puts "\nERRO: escolha uma opção válida\n".colorize(:color => :white, :background => :red)
+    break
+  end
 end
 
-puts "\nObrigada por acessar a nossa plataforma de pesquisa :)\n".green
+if opcao == SAIR
+  puts "\nObrigada por acessar a nossa plataforma de pesquisa :)\n".green
+end
