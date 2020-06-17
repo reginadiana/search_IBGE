@@ -14,7 +14,6 @@ LESS_POPULATION_OF = 8
 SUM_POPULATION = 9
 POPULATION_AVARAGE = 10
 SAIR = 0
-MENU = 28
 
 def welcome
   puts 'Bem-vindo a plataforma de pesquisa do IBGE!'.green
@@ -92,7 +91,7 @@ db = SQLite3::Database.open "db/database.db"
 
 while opcao != SAIR
   if opcao == SELECT_UF
-    puts "\nVoce escolheu: ver as informações de uma UF:\n".colorize(:light_blue)
+    puts "\nVocê escolheu: ver as informações de uma UF:\n".colorize(:light_blue)
     uf = insert_uf
     response = db.execute("SELECT * FROM Federatives WHERE Code=? OR Title LIKE'#{uf}%' ", uf)
     puts "#{response}\n".green
@@ -100,7 +99,7 @@ while opcao != SAIR
     opcao = gets.to_i
   end
   if opcao == SELECT_COUNTIES_BY_UF
-    puts "\nVoce escolheu: ver os municipios de uma UF:\n".colorize(:light_blue)
+    puts "\nVocê escolheu: ver os municipios de uma UF:\n".colorize(:light_blue)
     uf = insert_uf
     response = db.execute("SELECT Title FROM Counties WHERE Code LIKE'#{uf}%' OR Title LIKE'%#{uf}%'")
     response.each do |data|
@@ -112,7 +111,7 @@ while opcao != SAIR
     opcao = gets.to_i
   end
   if opcao == SELECT_COUNTY
-    puts "\nVoce escolheu: ver informações de um Municipo:\n".colorize(:light_blue)
+    puts "\nVocê escolheu: ver informações de um Municipo:\n".colorize(:light_blue)
     county = insert_county
     response = db.execute("SELECT * FROM Counties WHERE Code=? OR Title LIKE'#{county}%'", county)
     puts "#{response}\n".green
@@ -121,7 +120,7 @@ while opcao != SAIR
     opcao = gets.to_i
   end
   if opcao == LARGEST_POPULATION
-    puts "\nVoce escolheu: 10 Municipios com maior população do Brasil:\n".colorize(:light_blue)
+    puts "\nVocê escolheu: 10 Municipios com maior população do Brasil:\n".colorize(:light_blue)
 
     response = db.execute(Sql.new.query_largest_population)
     response.each do |data|
@@ -132,7 +131,7 @@ while opcao != SAIR
     opcao = gets.to_i
   end
   if opcao == LESS_POPULATION
-    puts "\nVoce escolheu: 10 Municipios com menor população do Brasil:\n".colorize(:light_blue)
+    puts "\nVocê escolheu: 10 Municipios com menor população do Brasil:\n".colorize(:light_blue)
 
     response = db.execute(Sql.new.query_less_population)
     response.each do |data|
@@ -144,7 +143,7 @@ while opcao != SAIR
   end
 
   if opcao == LARGEST_POPULATION_OF
-    puts "\nVoce escolheu: 10 Municipios com maior população de uma UF:\n".colorize(:light_blue)
+    puts "\nVocê escolheu: 10 Municipios com maior população de uma UF:\n".colorize(:light_blue)
     uf = insert_uf
     response = db.execute("SELECT Title FROM 
       (SELECT * FROM Counties WHERE Code LIKE'#{uf}%' OR Title LIKE'%#{uf}%') 
@@ -158,7 +157,7 @@ while opcao != SAIR
   end
 
   if opcao == LESS_POPULATION_OF
-    puts "\nVoce escolheu: 10 Municipios com menor população de uma UF:\n".colorize(:light_blue)
+    puts "\nVocê escolheu: 10 Municipios com menor população de uma UF:\n".colorize(:light_blue)
     uf = insert_uf
     response = db.execute("SELECT Title FROM 
       (SELECT * FROM Counties WHERE Code LIKE'#{uf}%' OR Title LIKE'%#{uf}%') 
@@ -171,11 +170,39 @@ while opcao != SAIR
     opcao = gets.to_i
   end
   if opcao == SUM_POPULATION
-    puts "\nSoma da Populaçao:\n"
+    puts "\nVocê escolheu: Ver soma da populaçao a partir de uma UF:\n".colorize(:light_blue)
     uf = insert_uf
-    uf.salvar
-    wait_keypress
-    clear
+    response = db.execute("SELECT Population FROM 
+    (SELECT * FROM Counties WHERE 
+    Code LIKE'#{uf}%') ") 
+
+    sum_population = 0
+    response.each do |data|
+      sum_population = sum_population + data[0]
+    end
+
+    puts "\nSoma da população: #{sum_population} habitantes".green
+
+    puts "\nEscolha uma opção:"
+    opcao = gets.to_i
+  end
+
+  if opcao == POPULATION_AVARAGE
+    puts "\nVocê escolheu: Ver soma da media da populaçao a partir de uma UF:\n".colorize(:light_blue)
+    uf = insert_uf
+    response = db.execute("SELECT Population FROM 
+    (SELECT * FROM Counties WHERE 
+    Code LIKE'#{uf}%') ") 
+
+    sum_population = 0
+    response.each do |data|
+      sum_population = sum_population + data[0]
+    end
+
+    puts "\nSoma da população: #{sum_population/(response.length)} habitantes".green
+
+    puts "\nEscolha uma opção:"
+    opcao = gets.to_i
   end
 
   if opcao < 0 or opcao > 11
