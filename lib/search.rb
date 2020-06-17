@@ -1,5 +1,6 @@
 require 'io/console'
 require 'sqlite3'
+require 'colorize'
 require_relative 'sql'
 
 SELECT_UF = 1
@@ -16,7 +17,7 @@ SAIR = 0
 MENU = 28
 
 def welcome
-  puts 'Bem-vindo a plataforma de pesquisa do IBGE!'
+  puts 'Bem-vindo a plataforma de pesquisa do IBGE!'.green
 end
 
 def clear
@@ -50,21 +51,21 @@ def menu
 
   print "\nMenu:\n"
 
-  puts "[#{SELECT_UF}] Veja as informações de uma UF"
-  puts "[#{SELECT_COUNTIES_BY_UF}] Veja todos os municipios de uma UF"
+  puts "[#{SELECT_UF}] Veja as informações de uma UF".yellow
+  puts "[#{SELECT_COUNTIES_BY_UF}] Veja todos os municipios de uma UF".yellow
   decorate
-  puts "[#{POPULATION_BY_COUNTY}] Veja o total da população de um Municipio"
-  puts "[#{SELECT_COUNTY}] Veja as informações de um Municipio"
+  puts "[#{POPULATION_BY_COUNTY}] Veja o total da população de um Municipio".yellow
+  puts "[#{SELECT_COUNTY}] Veja as informações de um Municipio".yellow
   decorate
-  puts "[#{LARGEST_POPULATION}] Veja os 10 Municipios com maior população do Brasil"
-  puts "[#{LESS_POPULATION}] Veja os 10 Municipios com menor população do Brasil"
-  puts "[#{LARGEST_POPULATION_OF}] Veja os 10 Municipios com maior população de uma UF"
-  puts "[#{LESS_POPULATION_OF}] Veja os 10 Municipios com menor população de uma UF"
+  puts "[#{LARGEST_POPULATION}] Veja os 10 Municipios com maior população do Brasil".yellow
+  puts "[#{LESS_POPULATION}] Veja os 10 Municipios com menor população do Brasil".yellow
+  puts "[#{LARGEST_POPULATION_OF}] Veja os 10 Municipios com maior população de uma UF".yellow
+  puts "[#{LESS_POPULATION_OF}] Veja os 10 Municipios com menor população de uma UF".yellow
   decorate
-  puts "[#{SUM_POPULATION}] Escolha uma UF e veja a soma da população"
-  puts "[#{POPULATION_AVARAGE}] Escolha uma UF e veja a média populacional"
+  puts "[#{SUM_POPULATION}] Escolha uma UF e veja a soma da população".yellow
+  puts "[#{POPULATION_AVARAGE}] Escolha uma UF e veja a média populacional".yellow
   decorate
-  puts "[#{SAIR}] Sair"
+  puts "[#{SAIR}] Sair".yellow
 
   print 'Escolha uma opção: '
   gets.to_i
@@ -91,57 +92,58 @@ db = SQLite3::Database.open "db/database.db"
 
 while opcao != SAIR
   if opcao == SELECT_UF
-    print("\nVoce escolheu: ver as informações de uma UF:\n")
+    puts "\nVoce escolheu: ver as informações de uma UF:\n".colorize(:light_blue)
     uf = insert_uf
     response = db.execute("SELECT * FROM Federatives WHERE Code=? OR Title LIKE'#{uf}%' ", uf)
-    puts response
-
-    print "\nEscolha uma opção:"
+    puts "#{response}".green
+    puts "\nEscolha uma opção:"
     opcao = gets.to_i
   end
   if opcao == SELECT_COUNTIES_BY_UF
-    print("\nVoce escolheu: ver os municipios de uma UF:\n")
+    puts "\nVoce escolheu: ver os municipios de uma UF:\n".colorize(:light_blue)
     uf = insert_uf
     response = db.execute("SELECT Title FROM Counties WHERE Code LIKE'#{uf}%' OR Title LIKE'%#{uf}%'")
-    puts response
-    print "\nTotal de Municipios: " + response.length.to_s + "\n"
+    response.each do |data|
+      puts "#{data}\n".green
+    end
+    puts "\nTotal de Municipios: " + response.length.to_s + "\n"
 
-    print "\nEscolha uma opção:"
+    puts "\nEscolha uma opção:"
     opcao = gets.to_i
   end
   if opcao == SELECT_COUNTY
-    print("\nVoce escolheu: ver informações de um Municipo:\n")
+    puts "\nVoce escolheu: ver informações de um Municipo:\n".colorize(:light_blue)
     county = insert_county
     response = db.execute("SELECT * FROM Counties WHERE Code=? OR Title LIKE'#{county}%'", county)
-    puts response
+    puts "#{response}".green
 
-    print "\nEscolha uma opção:"
+    puts "\nEscolha uma opção:"
     opcao = gets.to_i
   end
   if opcao == LARGEST_POPULATION
-    print("\nVoce escolheu: 10 Municipios com maior população do Brasil:\n")
+    puts "\nVoce escolheu: 10 Municipios com maior população do Brasil:\n".colorize(:light_blue)
 
     response = db.execute(Sql.new.query_largest_population)
     response.each do |data|
-      puts data
+      puts "#{data}\n".green
     end
 
-    print "\nEscolha uma opção:"
+    puts "\nEscolha uma opção:"
     opcao = gets.to_i
   end
   if opcao == LESS_POPULATION
-    print("\nVoce escolheu: 10 Municipios com menor população do Brasil:\n")
+    puts "\nVoce escolheu: 10 Municipios com menor população do Brasil:\n".colorize(:light_blue)
 
     response = db.execute(Sql.new.query_less_population)
     response.each do |data|
-      puts data
+      puts "#{data}\n".green
     end
 
-    print "\nEscolha uma opção:"
+    puts "\nEscolha uma opção:"
     opcao = gets.to_i
   end
   if opcao == SUM_POPULATION
-    print("\nSoma da Populaçao:\n")
+    puts "\nSoma da Populaçao:\n"
     uf = insert_uf
     uf.salvar
     wait_keypress
@@ -149,8 +151,4 @@ while opcao != SAIR
   end
 end
 
-print("\nObrigada por acessar a nossa plataforma de pesquisa :)\n")
-
-
-
-
+puts "\nObrigada por acessar a nossa plataforma de pesquisa :)\n".green
