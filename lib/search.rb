@@ -49,7 +49,7 @@ def menu
   print "\nUnidades Federativas (UF):\n"
   read_data("federatives")
 
-  print "\nMenu:\n"
+  print "\nMenu:\n".yellow
 
   puts "[#{SELECT_UF}] Veja as informações de uma UF".yellow
   puts "[#{SELECT_COUNTIES_BY_UF}] Veja todos os municipios de uma UF".yellow
@@ -139,6 +139,34 @@ while opcao != SAIR
       puts "#{data}\n".green
     end
 
+    puts "\nEscolha uma opção:"
+    opcao = gets.to_i
+  end
+
+  if opcao == LARGEST_POPULATION_OF
+    puts "\nVoce escolheu: 10 Municipios com maior população de uma UF:\n".colorize(:light_blue)
+    uf = insert_uf
+    response = db.execute("SELECT Title FROM 
+      (SELECT * FROM Counties WHERE Code LIKE'#{uf}%' OR Title LIKE'%#{uf}%') 
+      ORDER BY Population DESC LIMIT 10;")
+    response.each do |data|
+      puts "#{data}\n".green
+    end
+  
+    puts "\nEscolha uma opção:"
+    opcao = gets.to_i
+  end
+
+  if opcao == LESS_POPULATION_OF
+    puts "\nVoce escolheu: 10 Municipios com menor população de uma UF:\n".colorize(:light_blue)
+    uf = insert_uf
+    response = db.execute("SELECT Title FROM 
+      (SELECT * FROM Counties WHERE Code LIKE'#{uf}%' OR Title LIKE'%#{uf}%') 
+      ORDER BY Population LIMIT 10;")
+    response.each do |data|
+      puts "#{data}\n".green
+    end
+  
     puts "\nEscolha uma opção:"
     opcao = gets.to_i
   end
