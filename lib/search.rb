@@ -115,7 +115,7 @@ opcao = menu
 
 while opcao != SAIR
   if opcao == SELECT_UF
-    puts "\nVocê escolheu: ver as informações de uma UF:\n".colorize(:light_blue)
+    puts "\nVocê escolheu: ver as informações de uma UF\n".colorize(:light_blue)
     uf = insert_uf
     response = db.execute("SELECT * FROM Federatives WHERE Code=? OR Title LIKE'#{uf}%' ", uf)
     
@@ -127,7 +127,7 @@ while opcao != SAIR
     opcao = continue
   end
   if opcao == SELECT_COUNTIES_BY_UF
-    puts "\nVocê escolheu: ver os municipios de uma UF:\n".colorize(:light_blue)
+    puts "\nVocê escolheu: ver os municipios de uma UF\n".colorize(:light_blue)
     uf = insert_uf
     response = db.execute("SELECT Title FROM Counties WHERE Code LIKE'#{uf}%' OR Title LIKE'%#{uf}%'")
     
@@ -143,7 +143,7 @@ while opcao != SAIR
     opcao = continue
   end
   if opcao == POPULATION_BY_COUNTY
-    puts "\nVocê escolheu: ver a população total de um Municipo:\n".colorize(:light_blue)
+    puts "\nVocê escolheu: ver a população total de um Municipo\n".colorize(:light_blue)
     county = insert_county
     response = db.execute("SELECT Title, Population FROM Counties WHERE Code='#{county}'")
 
@@ -155,7 +155,7 @@ while opcao != SAIR
     opcao = continue
   end
   if opcao == SELECT_COUNTY
-    puts "\nVocê escolheu: ver informações de um Municipo:\n".colorize(:light_blue)
+    puts "\nVocê escolheu: ver informações de um Municipo\n".colorize(:light_blue)
     county = insert_county
     response = db.execute("SELECT * FROM Counties WHERE Code=? OR Title LIKE'#{county}%'", county)
     
@@ -167,7 +167,7 @@ while opcao != SAIR
     opcao = continue
   end
   if opcao == LARGEST_POPULATION
-    puts "\nVocê escolheu: 10 Municipios com maior população do Brasil:\n".colorize(:light_blue)
+    puts "\nVocê escolheu: 10 Municipios com maior população do Brasil\n".colorize(:light_blue)
 
     response = db.execute(Sql.new.query_largest_population)
 
@@ -181,7 +181,7 @@ while opcao != SAIR
     opcao = continue
   end
   if opcao == LESS_POPULATION
-    puts "\nVocê escolheu: 10 Municipios com menor população do Brasil:\n".colorize(:light_blue)
+    puts "\nVocê escolheu: 10 Municipios com menor população do Brasil\n".colorize(:light_blue)
 
     response = db.execute(Sql.new.query_less_population)
 
@@ -196,7 +196,7 @@ while opcao != SAIR
   end
 
   if opcao == LARGEST_POPULATION_OF
-    puts "\nVocê escolheu: 10 Municipios com maior população de uma UF:\n".colorize(:light_blue)
+    puts "\nVocê escolheu: 10 Municipios com maior população de uma UF\n".colorize(:light_blue)
     uf = insert_uf
     response = db.execute("SELECT Title FROM 
       (SELECT * FROM Counties WHERE Code LIKE'#{uf}%' OR Title LIKE'%#{uf}%') 
@@ -213,7 +213,7 @@ while opcao != SAIR
   end
 
   if opcao == LESS_POPULATION_OF
-    puts "\nVocê escolheu: 10 Municipios com menor população de uma UF:\n".colorize(:light_blue)
+    puts "\nVocê escolheu: 10 Municipios com menor população de uma UF\n".colorize(:light_blue)
     uf = insert_uf
     response = db.execute("SELECT Title FROM 
       (SELECT * FROM Counties WHERE Code LIKE'#{uf}%' OR Title LIKE'%#{uf}%') 
@@ -230,7 +230,7 @@ while opcao != SAIR
     opcao = continue
   end
   if opcao == SUM_POPULATION
-    puts "\nVocê escolheu: Ver soma da populaçao a partir de uma UF:\n".colorize(:light_blue)
+    puts "\nVocê escolheu: Ver soma da populaçao a partir de uma UF\n".colorize(:light_blue)
 
     sum_population = calc_sum_population_avarege[0]
 
@@ -241,7 +241,7 @@ while opcao != SAIR
   end
 
   if opcao == POPULATION_AVARAGE
-    puts "\nVocê escolheu: Ver soma da media da populaçao a partir de uma UF:\n".colorize(:light_blue)
+    puts "\nVocê escolheu: Ver soma da media da populaçao a partir de uma UF\n".colorize(:light_blue)
     avarege = calc_sum_population_avarege[1]
     if avarege > 0
       puts "\nMedia da população: #{avarege} habitantes".green
