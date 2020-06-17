@@ -3,6 +3,8 @@ require 'sqlite3'
 require 'colorize'
 require_relative 'sql'
 
+db = SQLite3::Database.open "db/database.db"
+
 SELECT_UF = 1
 SELECT_COUNTIES_BY_UF = 2
 POPULATION_BY_COUNTY = 3
@@ -14,34 +16,6 @@ LESS_POPULATION_OF = 8
 SUM_POPULATION = 9
 POPULATION_AVARAGE = 10
 SAIR = 0
-
-def welcome
-  puts 'Bem-vindo a plataforma de pesquisa do IBGE!'.green
-end
-
-def clear
-  system('clear')
-  puts
-end
-
-def wait_keypress
-  puts
-  puts 'Pressione alguma tecla para continuar'
-  STDIN.getch
-end
-
-def read_input
-  gets.chomp
-end
-
-def read_data(file)
-  data = File.readlines(Dir.pwd + "/data/#{file}.csv")
-  print("\nCódigo | Unidade Federativa\n")
-  data.each do |lines|
-    data = lines.split(',')
-    puts "[#{data[1]}] - #{data[2]}"
-  end
-end
 
 def menu
 
@@ -70,76 +44,155 @@ def menu
   gets.to_i
 end
 
+def decorate
+  puts "-"*60
+end
+
+def welcome
+  puts 'Bem-vindo a plataforma de pesquisa do IBGE!'.green
+end
+
+def clear
+  system('clear')
+  puts
+end
+
+def read_input
+  gets.chomp
+end
+
 def insert_uf
-  print 'Digite o código, nome ou sigla entre parenteses da UF:'
+  print 'Digite o código da UF:'
   code = read_input
 end
 
 def insert_county
-  print 'Digite o código ou nome do Municipio:'
+  print 'Digite o código do Municipio:'
   code = read_input
 end
 
-def decorate
-  puts "-"*60
+def continue
+  puts "\nEscolha uma opção:"
+  opcao = gets.to_i
+end
+
+def search_not_found
+  puts "Não foi possível encontrar os dados, tente novamente".red
+end
+
+def read_data(file)
+  data = File.readlines(Dir.pwd + "/data/#{file}.csv")
+  print("\nCódigo | Unidade Federativa\n")
+  data.each do |lines|
+    data = lines.split(',')
+    puts "[#{data[1]}] - #{data[2]}"
+  end
+end
+
+def calc_sum_population_avarege
+  db = SQLite3::Database.open "db/database.db"
+  uf = insert_uf
+  response = db.execute("SELECT Population FROM 
+  (SELECT * FROM Counties WHERE 
+  Code LIKE'#{uf}%') ") 
+
+  if response.any?
+    sum_population = 0
+    response.each do |data|
+      sum_population = sum_population + data[0]
+    end
+    avarege = sum_population/(response.length)
+    return sum_population, avarege
+  else
+    search_not_found
+    return 0
+  end
 end
 
 clear
 welcome
 opcao = menu
-db = SQLite3::Database.open "db/database.db"
 
 while opcao != SAIR
   if opcao == SELECT_UF
     puts "\nVocê escolheu: ver as informações de uma UF:\n".colorize(:light_blue)
     uf = insert_uf
     response = db.execute("SELECT * FROM Federatives WHERE Code=? OR Title LIKE'#{uf}%' ", uf)
-    puts "#{response}\n".green
-    puts "\nEscolha uma opção:"
-    opcao = gets.to_i
+    
+    if response.any?
+      puts "#{response}\n".green
+    else
+      search_not_found
+    end
+    opcao = continue
   end
   if opcao == SELECT_COUNTIES_BY_UF
     puts "\nVocê escolheu: ver os municipios de uma UF:\n".colorize(:light_blue)
     uf = insert_uf
     response = db.execute("SELECT Title FROM Counties WHERE Code LIKE'#{uf}%' OR Title LIKE'%#{uf}%'")
-    response.each do |data|
-      puts "#{data}\n".green
+    
+    if response.any?
+      response.each do |data|
+        puts "#{data}\n".green
+      end
+      puts "\nTotal de Municipios: " + response.length.to_s + "\n"
+    else
+      search_not_found
     end
-    puts "\nTotal de Municipios: " + response.length.to_s + "\n"
 
-    puts "\nEscolha uma opção:"
-    opcao = gets.to_i
+    opcao = continue
+  end
+  if opcao == POPULATION_BY_COUNTY
+    puts "\nVocê escolheu: ver a população total de um Municipo:\n".colorize(:light_blue)
+    county = insert_county
+    response = db.execute("SELECT Title, Population FROM Counties WHERE Code='#{county}'")
+
+    if response.any?
+      puts "Número de Habitantes: #{response[0][1]} em #{response[0][0]}\n".green
+    else
+      search_not_found
+    end
+    opcao = continue
   end
   if opcao == SELECT_COUNTY
     puts "\nVocê escolheu: ver informações de um Municipo:\n".colorize(:light_blue)
     county = insert_county
     response = db.execute("SELECT * FROM Counties WHERE Code=? OR Title LIKE'#{county}%'", county)
-    puts "#{response}\n".green
-
-    puts "\nEscolha uma opção:"
-    opcao = gets.to_i
+    
+    if response.any?
+      puts "#{response}\n".green
+    else
+      search_not_found
+    end
+    opcao = continue
   end
   if opcao == LARGEST_POPULATION
     puts "\nVocê escolheu: 10 Municipios com maior população do Brasil:\n".colorize(:light_blue)
 
     response = db.execute(Sql.new.query_largest_population)
-    response.each do |data|
-      puts "#{data}\n".green
-    end
 
-    puts "\nEscolha uma opção:"
-    opcao = gets.to_i
+    if response.any?
+      response.each do |data|
+        puts "#{data}\n".green
+      end
+    else
+      search_not_found
+    end
+    opcao = continue
   end
   if opcao == LESS_POPULATION
     puts "\nVocê escolheu: 10 Municipios com menor população do Brasil:\n".colorize(:light_blue)
 
     response = db.execute(Sql.new.query_less_population)
-    response.each do |data|
-      puts "#{data}\n".green
-    end
 
-    puts "\nEscolha uma opção:"
-    opcao = gets.to_i
+    if response.any?
+      response.each do |data|
+        puts "#{data}\n".green
+      end
+    else
+      search_not_found
+    end
+    opcao = continue
   end
 
   if opcao == LARGEST_POPULATION_OF
@@ -148,12 +201,15 @@ while opcao != SAIR
     response = db.execute("SELECT Title FROM 
       (SELECT * FROM Counties WHERE Code LIKE'#{uf}%' OR Title LIKE'%#{uf}%') 
       ORDER BY Population DESC LIMIT 10;")
-    response.each do |data|
-      puts "#{data}\n".green
+
+    if response.any?
+      response.each do |data|
+        puts "#{data}\n".green
+      end
+    else
+      search_not_found
     end
-  
-    puts "\nEscolha uma opção:"
-    opcao = gets.to_i
+    opcao = continue
   end
 
   if opcao == LESS_POPULATION_OF
@@ -162,47 +218,35 @@ while opcao != SAIR
     response = db.execute("SELECT Title FROM 
       (SELECT * FROM Counties WHERE Code LIKE'#{uf}%' OR Title LIKE'%#{uf}%') 
       ORDER BY Population LIMIT 10;")
-    response.each do |data|
-      puts "#{data}\n".green
+
+    if response.any? 
+      response.each do |data|
+        puts "#{data}\n".green
+      end
+    else
+      search_not_found
     end
   
-    puts "\nEscolha uma opção:"
-    opcao = gets.to_i
+    opcao = continue
   end
   if opcao == SUM_POPULATION
     puts "\nVocê escolheu: Ver soma da populaçao a partir de uma UF:\n".colorize(:light_blue)
-    uf = insert_uf
-    response = db.execute("SELECT Population FROM 
-    (SELECT * FROM Counties WHERE 
-    Code LIKE'#{uf}%') ") 
 
-    sum_population = 0
-    response.each do |data|
-      sum_population = sum_population + data[0]
+    sum_population = calc_sum_population_avarege[0]
+
+    if sum_population > 0
+      puts "\nSoma da população: #{sum_population} habitantes".green
     end
-
-    puts "\nSoma da população: #{sum_population} habitantes".green
-
-    puts "\nEscolha uma opção:"
-    opcao = gets.to_i
+    opcao = continue
   end
 
   if opcao == POPULATION_AVARAGE
     puts "\nVocê escolheu: Ver soma da media da populaçao a partir de uma UF:\n".colorize(:light_blue)
-    uf = insert_uf
-    response = db.execute("SELECT Population FROM 
-    (SELECT * FROM Counties WHERE 
-    Code LIKE'#{uf}%') ") 
-
-    sum_population = 0
-    response.each do |data|
-      sum_population = sum_population + data[0]
+    avarege = calc_sum_population_avarege[1]
+    if avarege > 0
+      puts "\nMedia da população: #{avarege} habitantes".green
     end
-
-    puts "\nSoma da população: #{sum_population/(response.length)} habitantes".green
-
-    puts "\nEscolha uma opção:"
-    opcao = gets.to_i
+    opcao = continue
   end
 
   if opcao < 0 or opcao > 11
