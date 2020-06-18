@@ -74,43 +74,13 @@ $ ruby lib/search.rb
 
 ## Como pesquisar pelos dados :mag_right:
 
-**Menu**
-
 <img src="https://user-images.githubusercontent.com/46378210/85049538-2b0b4f80-b16b-11ea-9597-f234f8461642.jpg"/>
 
-**1. Ao escolher por uma UF, listar os 10 municipios com maior população**
+**1. Digite uma das opções do menu**
 
-```ruby
-```
+**2. Digite o código da UF ou do Municipio**
 
-**2. Ao pesquisar por um municipio pelo nome, listar sua população**
-
-```ruby
-```
-
-**3. Listar a população de um municipio por algum código**
-
-```ruby
-```
-
-**4. Pesquisar a soma total da população dos municipios a partir da esquisa de uma UF pelo nome ou seu código**
-
-```ruby
-```
-
-**5. Lista das 10 cidades mais populosas a partir da UF**
-
-```ruby
-```
-
-**6. Media populacional dos municipios a partir da UF**
-
-```ruby
-```
-
-**7. Busca informações de uma UF pelo nome**
-```ruby
-```
+Obs: caso uma opção invalida seja escolhida ou se a busca não for executada com sucesso uma mensagem de erro será mostrada.
 
 ## Executando os testes :memo:
 
