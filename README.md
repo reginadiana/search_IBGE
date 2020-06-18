@@ -74,7 +74,9 @@ $ ruby lib/search.rb
 
 ## Como pesquisar pelos dados :mag_right:
 
-<img src="https://user-images.githubusercontent.com/46378210/85049538-2b0b4f80-b16b-11ea-9597-f234f8461642.jpg"/>
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/46378210/85049538-2b0b4f80-b16b-11ea-9597-f234f8461642.jpg" width="600"/>
+</p>
 
 **1. Digite uma das opções do menu**
 
@@ -88,10 +90,6 @@ Obs: caso uma opção invalida seja escolhida ou se a busca não for executada c
 $ cd search_IBGE
 $ rspec 
 ```
-
-## Database (Tabela) :bookmark_tabs:
-
-## Database (Gráficos) :bar_chart:
 
 ## Licença :trident:
 
