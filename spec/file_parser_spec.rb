@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'spec_helper'
 require 'sqlite3'
 
@@ -6,24 +7,19 @@ describe FileParser do
     FileParser.new.separate_csv
   end
   it 'check if counties.csv and federative.csv not exist' do
-    response = FileParser.new.files_not_exist("file", "other_file")
+    response = FileParser.new.files_not_exist('file', 'other_file')
     expect(response).to eq false
   end
   it 'check if counties.csv and federative.csv exist' do
-    response = FileParser.new.files_not_exist("federatives", "counties")
+    response = FileParser.new.files_not_exist('federatives', 'counties')
     expect(response).to eq true
   end
   it 'separate populacao_2019.csv in two other files csv' do
     FileParser.new.separate_csv
 
-    expect(File.read('data/federatives.csv')).to include(
-      "UF,11,Rondônia")
-    expect(File.read('data/federatives.csv')).to_not include(
-      "MU,1100015,Alta Floresta D'Oeste (RO),22945")
-
-    expect(File.read('data/counties.csv')).to include(
-      "MU,1100015,Alta Floresta D'Oeste (RO),22945")
-    expect(File.read('data/counties.csv')).to_not include(
-      "UF,11,Rondônia")
+    expect(File.read('data/federatives.csv')).to include('UF,11,Rondônia')
+    expect(File.read('data/federatives.csv')).to_not include("MU,1100015,Alta Floresta D'Oeste (RO),22945")
+    expect(File.read('data/counties.csv')).to include("MU,1100015,Alta Floresta D'Oeste (RO),22945")
+    expect(File.read('data/counties.csv')).to_not include('UF,11,Rondônia')
   end
 end

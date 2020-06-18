@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 class Sql
-  # Informações sobe a UF
+
+  # Info sobe a UF
   def query_select_uf
     read_file('query_select_uf.sql')
   end
@@ -8,7 +11,7 @@ class Sql
     read_file('query_select_counties_by_uf.sql')
   end
 
-  # Informações sobre o Municipio
+  # Info sobre o Municipio
   def query_population_by_county 
     read_file('query_population_by_county.sql')
   end
@@ -17,7 +20,7 @@ class Sql
     read_file('query_select_county.sql')
   end
 
-  # Informações sobre maior/menor população
+  # Info sobre maior e menor população
   def query_largest_population
     read_file('query_largest_population.sql')
   end
@@ -25,11 +28,12 @@ class Sql
   def query_less_population
     read_file('query_less_population.sql')
   end
+  
   def query_largest_population_of
     read_file('query_largest_population_of.sql')
   end
 
-  # Relações matematicas sob a população
+  # Soma/Media
   def query_sum_population
     read_file('query_sum_population.sql') 
   end
@@ -43,4 +47,5 @@ class Sql
   def read_file(file)
     File.open(Dir.pwd + "/queries/#{file}").read
   end
+
 end

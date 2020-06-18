@@ -1,5 +1,5 @@
+# frozen_string_lateral: true
 #!/usr/bin/env ruby
-
 
 puts '== Installing dependencies =='
 system 'gem install bundler --conservative'
@@ -9,15 +9,15 @@ require 'sqlite3'
 
 puts "\n== Cheking if database exist =="
 
-if(File.exist?("db/database.db")) 
+if File.exist?('db/database.db')
   puts "\n== Database already exist, you can start searchs :) =="
 else
   puts "\n== Preparing database: Create Tables =="
   begin
-    federative_csv = File.readlines(Dir.pwd + "/data/federative.csv")
-    counties_csv = File.readlines(Dir.pwd + "/data/counties.csv")
+    federative_csv = File.readlines(Dir.pwd + '/data/federative.csv')
+    counties_csv = File.readlines(Dir.pwd + '/data/counties.csv')
 
-    db = SQLite3::Database.open "db/database.db"
+    db = SQLite3::Database.open 'db/database.db' 
     db.execute <<-SQL
       CREATE TABLE Federatives(
         Status varchar(2),
@@ -37,18 +37,18 @@ else
 
     federative_csv.each do |dados|
       dados = dados.split(',')
-      db.execute "INSERT INTO Federatives VALUES ( ?, ?, ? )", dados
+      db.execute 'INSERT INTO Federatives VALUES ( ?, ?, ? )', dados
     end
 
     counties_csv.each do |dados|
       dados = dados.split(',')
-      db.execute "INSERT INTO Counties VALUES ( ?, ?, ?, ? )", dados
+      db.execute 'INSERT INTO Counties VALUES ( ?, ?, ?, ? )', dados
     end
 
     rescue SQLite3::Exception => e
       puts e
     ensure
-    puts "\n== We finish to preparate database :) =="
+      puts "\n== We finish to preparate database :) =="
       db.close if db
     end
 end
