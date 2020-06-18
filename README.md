@@ -8,8 +8,14 @@
   <img src="http://img.shields.io/static/v1?label=STATUS&message=IN%20PROGRESSS&color=ORANGE&style=for-the-badge">
 </p>
 
-| [:us: &nbsp; README em Ingles](https://github.com/reginadiana/search_IBGE/blob/master/README-us.md) | :memo: &nbsp;&nbsp;[Planejamento e Fases do Projeto](https://github.com/reginadiana/search_IBGE/wiki/Search-IBGE---Planejamento----Menu) | [Proposta](https://github.com/reginadiana/search_IBGE/blob/master/desafio_-_treinadev.pdf) |
-| :------: | :------: | :------: |
+| [:us: &nbsp; README em Ingles](https://github.com/reginadiana/search_IBGE/blob/master/README-us.md) | [Proposta](https://github.com/reginadiana/search_IBGE/blob/master/desafio_-_treinadev.pdf) |
+| :------: | :------: | 
+
+:memo: &nbsp;&nbsp; Planejamento e Fases do Projeto
+
+| [Amostra dos Dados (CSV)](https://github.com/reginadiana/search_IBGE/wiki/Amostra-dos-Dados-CSV) | [Análise dos Dados](https://github.com/reginadiana/search_IBGE/wiki/An%C3%A1lise-dos-Dados) | [Amostra Gráfica dos Dados](https://github.com/reginadiana/search_IBGE/wiki/Amostra-Gr%C3%A1fica-dos-Dados) |
+| :-----: | :-----: | :-----: | 
+| [**Comandos SQL para busca**](https://github.com/reginadiana/search_IBGE/wiki/Comandos-SQL-para-busca) | [**Fases de Execução**](https://github.com/reginadiana/search_IBGE/wiki/Fases-de-Execu%C3%A7%C3%A3o) |
 
 ## Tópicos
 
