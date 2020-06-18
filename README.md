@@ -67,6 +67,10 @@ Acesse a pasta:
 ```
 $ cd search_IBGE
 ```
+Instale as dependencias e prepare o banco de dados:
+```
+$ bin/setup
+```
 Para abrir o menu:
 ```
 $ ruby lib/search.rb
