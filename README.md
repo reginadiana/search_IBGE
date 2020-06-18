@@ -25,10 +25,6 @@
 
 :small_orange_diamond: &nbsp; [Executando os testes](#executando-os-testes-memo) 
 
-:small_orange_diamond: &nbsp; [Database (Tabela)](#database-tabela-bookmark_tabs)
-
-:small_orange_diamond: &nbsp; [Database (Gráficos)](#database-gráficos-bar_chart)
-
 :small_orange_diamond: &nbsp; [Licença](#licença-trident)
 
 ## Descrição do Projeto
