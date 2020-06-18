@@ -67,8 +67,16 @@ Acesse a pasta:
 ```
 $ cd search_IBGE
 ```
+Para abrir o menu:
+```
+$ ruby lib/search.rb
+```
 
 ## Como pesquisar pelos dados :mag_right:
+
+**Menu**
+
+<img src="https://user-images.githubusercontent.com/46378210/85049538-2b0b4f80-b16b-11ea-9597-f234f8461642.jpg"/>
 
 **1. Ao escolher por uma UF, listar os 10 municipios com maior população**
 
