@@ -45,6 +45,8 @@
 
 :books: &nbsp; [**RSpec**](https://github.com/rspec/rspec-rails) para escrever e executar testes unitários, isto é, de baixo nível 
 
+:books: &nbsp; [**Rubocop**](https://github.com/rubocop-hq/rubocop) para verificar a formatação do código, analisando o uso correto de identação, uso de aspas duplas e simples, espaços e linhas desnecessárias, etc.
+
 ## Pré-Requisitos :package:
 
 Algumas dependencias devem ser instaladas antes de configurar o projeto:
