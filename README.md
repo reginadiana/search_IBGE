@@ -13,8 +13,8 @@
 
 :memo: &nbsp;&nbsp; Planejamento e Fases do Projeto
 
-| [Amostra dos Dados (CSV)](https://github.com/reginadiana/search_IBGE/wiki/Amostra-dos-Dados-CSV) | [Análise dos Dados](https://github.com/reginadiana/search_IBGE/wiki/An%C3%A1lise-dos-Dados) | [Amostra Gráfica dos Dados](https://github.com/reginadiana/search_IBGE/wiki/Amostra-Gr%C3%A1fica-dos-Dados) |
-| :-----: | :-----: | :-----: | 
+| [Amostra dos Dados (CSV)](https://github.com/reginadiana/search_IBGE/wiki/Amostra-dos-Dados-CSV) |  [Amostra Gráfica dos Dados](https://github.com/reginadiana/search_IBGE/wiki/Amostra-Gr%C3%A1fica-dos-Dados) |
+| :-----: | :-----: | 
 | [**Comandos SQL para busca**](https://github.com/reginadiana/search_IBGE/wiki/Comandos-SQL-para-busca) | [**Fases de Execução**](https://github.com/reginadiana/search_IBGE/wiki/Fases-de-Execu%C3%A7%C3%A3o) |
 
 ## Tópicos
