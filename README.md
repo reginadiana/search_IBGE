@@ -8,8 +8,14 @@
   <img src="http://img.shields.io/static/v1?label=STATUS&message=IN%20PROGRESSS&color=ORANGE&style=for-the-badge">
 </p>
 
-| [:us: &nbsp; README em Ingles](https://github.com/reginadiana/search_IBGE/blob/master/README-us.md) | :memo: &nbsp;&nbsp;[Planejamento e Fases do Projeto](https://github.com/reginadiana/search_IBGE/wiki/Search-IBGE---Planejamento----Menu) | [Proposta](https://github.com/reginadiana/search_IBGE/blob/master/desafio_-_treinadev.pdf) |
-| :------: | :------: | :------: |
+| [:us: &nbsp; README em Ingles](https://github.com/reginadiana/search_IBGE/blob/master/README-us.md) | [Proposta](https://github.com/reginadiana/search_IBGE/blob/master/desafio_-_treinadev.pdf) |
+| :------: | :------: | 
+
+:memo: &nbsp;&nbsp; Planejamento e Fases do Projeto
+
+| [Amostra dos Dados (CSV)](https://github.com/reginadiana/search_IBGE/wiki/Amostra-dos-Dados-CSV) |  [Amostra Gráfica dos Dados](https://github.com/reginadiana/search_IBGE/wiki/Amostra-Gr%C3%A1fica-dos-Dados) |
+| :-----: | :-----: | 
+| [**Comandos SQL para busca**](https://github.com/reginadiana/search_IBGE/wiki/Comandos-SQL-para-busca) | [**Fases de Execução**](https://github.com/reginadiana/search_IBGE/wiki/Fases-de-Execu%C3%A7%C3%A3o) |
 
 ## Tópicos
 
@@ -25,10 +31,6 @@
 
 :small_orange_diamond: &nbsp; [Executando os testes](#executando-os-testes-memo) 
 
-:small_orange_diamond: &nbsp; [Database (Tabela)](#database-tabela-bookmark_tabs)
-
-:small_orange_diamond: &nbsp; [Database (Gráficos)](#database-gráficos-bar_chart)
-
 :small_orange_diamond: &nbsp; [Licença](#licença-trident)
 
 ## Descrição do Projeto
@@ -42,6 +44,8 @@
 :books: &nbsp; [**Sqlite**](https://rubygems.org/gems/pg/versions/0.18.4?locale=pt-BR) para construir o banco de dados 
 
 :books: &nbsp; [**RSpec**](https://github.com/rspec/rspec-rails) para escrever e executar testes unitários, isto é, de baixo nível 
+
+:books: &nbsp; [**Rubocop**](https://github.com/rubocop-hq/rubocop) para verificar a formatação do código, analisando o uso correto de identação, uso de aspas duplas e simples, espaços e linhas desnecessárias, etc.
 
 ## Pré-Requisitos :package:
 
@@ -67,42 +71,26 @@ Acesse a pasta:
 ```
 $ cd search_IBGE
 ```
+Instale as dependencias e prepare o banco de dados:
+```
+$ bin/setup
+```
+Para abrir o menu:
+```
+$ ruby lib/search.rb
+```
 
 ## Como pesquisar pelos dados :mag_right:
 
-**1. Ao escolher por uma UF, listar os 10 municipios com maior população**
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/46378210/85049538-2b0b4f80-b16b-11ea-9597-f234f8461642.jpg" width="600"/>
+</p>
 
-```ruby
-```
+**1. Digite uma das opções do menu**
 
-**2. Ao pesquisar por um municipio pelo nome, listar sua população**
+**2. Digite o código da UF ou do Municipio**
 
-```ruby
-```
-
-**3. Listar a população de um municipio por algum código**
-
-```ruby
-```
-
-**4. Pesquisar a soma total da população dos municipios a partir da esquisa de uma UF pelo nome ou seu código**
-
-```ruby
-```
-
-**5. Lista das 10 cidades mais populosas a partir da UF**
-
-```ruby
-```
-
-**6. Media populacional dos municipios a partir da UF**
-
-```ruby
-```
-
-**7. Busca informações de uma UF pelo nome**
-```ruby
-```
+Obs: caso uma opção invalida seja escolhida ou se a busca não for executada com sucesso uma mensagem de erro será mostrada.
 
 ## Executando os testes :memo:
 
@@ -110,10 +98,6 @@ $ cd search_IBGE
 $ cd search_IBGE
 $ rspec 
 ```
-
-## Database (Tabela) :bookmark_tabs:
-
-## Database (Gráficos) :bar_chart:
 
 ## Licença :trident:
 
