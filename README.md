@@ -5,7 +5,7 @@
 <p align="center">
   <img src="https://img.shields.io/apm/l/vim-mode?color=green&label=license&logo=license&logoColor=green&style=for-the-badge"/>
   <img src="http://img.shields.io/static/v1?label=Ruby&message=2.6.3&color=red&style=for-the-badge&logo=ruby"/>
-  <img src="http://img.shields.io/static/v1?label=STATUS&message=IN%20PROGRESSS&color=ORANGE&style=for-the-badge">
+  <img src="http://img.shields.io/static/v1?label=STATUS&message=done&color=green&style=for-the-badge">
 </p>
 
 | [:us: &nbsp; README em Ingles](https://github.com/reginadiana/search_IBGE/blob/master/README-us.md) | [Proposta](https://github.com/reginadiana/search_IBGE/blob/master/desafio_-_treinadev.pdf) |
