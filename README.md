@@ -73,7 +73,7 @@ $ cd search_IBGE
 ```
 Instale as dependencias e prepare o banco de dados:
 ```
-$ bin/setup
+$ bin/setup ou ruby bin/setup.rb
 ```
 Para abrir o menu:
 ```
